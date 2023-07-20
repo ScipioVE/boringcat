@@ -7,15 +7,8 @@ class Book(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, verbose_name="Titulo")
     
-    MANGA = 'manga'
-    COMIC = 'comic'
-    DEFAULT = 'book'
-    CHOICES_BOOK = [
-        (MANGA, 'Manga'),
-        (COMIC, 'Comic'),
-        (DEFAULT,'Book')
-    ]
-    booktype = models.CharField(max_length=20,choices=CHOICES_BOOK, default=DEFAULT)
+    
+    booktype = models.CharField(max_length=20)
     image = models.ImageField(upload_to='images/',null=True, verbose_name="Image")
     description = models.TextField(verbose_name="Description",null=True)
    
