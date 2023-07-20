@@ -9,5 +9,5 @@ class BookForm(forms.ModelForm):
         model = models.Book
         fields = '__all__'
         widgets = {
-            'booktype': forms.Select,
+            'booktype': forms.Select
         }

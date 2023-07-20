@@ -10,13 +10,12 @@ class Book(models.Model):
     MANGA = 'manga'
     COMIC = 'comic'
     DEFAULT = 'book'
-    CHOICES = [
+    CHOICES_BOOK = [
         (MANGA, 'Manga'),
         (COMIC, 'Comic'),
-        (DEFAULT,'book')
+        (DEFAULT,'Book')
     ]
-    
-    booktype = models.CharField(max_length=20,choices=CHOICES, default=DEFAULT)
+    booktype = models.CharField(max_length=20,choices=CHOICES_BOOK, default=DEFAULT)
     image = models.ImageField(upload_to='images/',null=True, verbose_name="Image")
     description = models.TextField(verbose_name="Description",null=True)
    
