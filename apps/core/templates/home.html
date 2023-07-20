@@ -10,7 +10,8 @@
                 class="h-100 p-5 text-white bg-dark border rounded-3">
                 <h2>Welcome to Boring Cat!</h2>
                 <p>Get started!</p>
-                <button class="btn btn-outline-primary" type="button">New Book!</button>
+                <a href="{% url 'NewBook' %}"><button class="btn btn-outline-primary" type="button" > Add a new Book!</button></a>
+                <a href="{% url 'Books' %}"><button class="btn btn-outline-primary" type="button" > See all books</button></a>
             </div>
         </div>
         <div class="col-md-6">
