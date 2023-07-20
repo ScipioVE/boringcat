@@ -21,7 +21,9 @@ def Index(request):
 
 def newBookForm(request):
     form = forms.BookForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
+    test = form.is_valid() 
+    print(test)
+    if test :
         form.save()
         return redirect('Books')
     context = { 'forms': form}
