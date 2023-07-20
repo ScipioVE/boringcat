@@ -14,4 +14,9 @@ class BookForm(forms.ModelForm):
         model = models.Book
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, *kwargs)
+        for field in self.fields:
+            print(field)
+            self.fields[field].widget.attrs.update({'class': 'form-control', 'placeholder':field.capitalize()})
 
