@@ -35,7 +35,7 @@ def editBookForm(request, id):
     book = models.Book.objects.get(id = id)
     form = forms.BookForm(request.POST or None, request.FILES or None, instance = book)
     print(form)
-    context = { 'form': form}
+    context = { 'forms': form}
     return render(request,'books/editbook.html', context)
 
 def deleteBook(request, id):
