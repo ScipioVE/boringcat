@@ -9,9 +9,9 @@
             <a name="" id="" class="btn btn-success" href="{% url 'NewBook' %}" role="button">New Book</a>
         </div>
         <div class="card-body">
-            <h4 class="card-title">Comics</h4>
+            <h4 class="card-title">Books</h4>
             <div class="table-responsive">
-                <table class="table table-primary">
+                <table class="table table-dark ">
                     <thead>
                         <tr>
                             <th scope="col"> ID</th>
@@ -34,8 +34,8 @@
 
                             </td>
                             <td>{{Book.description}}</td>
-                            <td> <a name="" id="" class="btn btn-info" href="{% url 'EditBook' %}" role="button">Edit</a>  
-                                <a name="" id="" class="btn btn-danger" href="#" role="button">Delete</a></td>
+                            <td> <a name="" id="" class="btn btn-success" href="{% url 'EditBook' Book.id %}" role="button">Edit</a>  
+                                <a name="" id="" class="btn btn-danger" href="{% url 'DeleteBook' Book.id %}" role="button">Delete</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
