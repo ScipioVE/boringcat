@@ -22,13 +22,23 @@ def Index(request):
 def newBookForm(request):
     form = forms.BookForm(request.POST or None, request.FILES or None)
     test = form.is_valid() 
-    print(test)
     if test :
         form.save()
         return redirect('Books')
+    else:
+        print("ERROR!!")
     context = { 'forms': form}
     return render(request,'books/newbook.html', context)
 
 
-def editBookForm(request):
-    return render(request,'books/editbook.html')
+def editBookForm(request, id):
+    book = models.Book.objects.get(id = id)
+    form = forms.BookForm(request.POST or None, request.FILES or None, instance = book)
+    print(form)
+    context = { 'form': form}
+    return render(request,'books/editbook.html', context)
+
+def deleteBook(request, id):
+    book = models.Book.objects.get(id = id)
+    book.delete()
+    return redirect('Books')
