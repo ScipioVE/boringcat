@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth  import login
 from django.http import HttpResponse
 
 
@@ -16,7 +17,8 @@ def signupform(request):
            try:
             new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
             new_user.save()
-            return HttpResponse("user created successfully")
+            login(request,new_user)
+            return redirect('Home')
            except:
                context.update({"error": "username already exists!"})
                return render(request,'signup.html', context)
