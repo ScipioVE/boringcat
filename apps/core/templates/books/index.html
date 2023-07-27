@@ -7,7 +7,17 @@
     <div class="card">
         <div class="card-header">
             <a name="" id="" class="btn btn-success" href="{% url 'NewBook' %}" role="button">New Book</a>
+            <nav class="navbar navbar-light bg-light">
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    <input name="selection" id="" class="btn btn-sm btn-outline-secondary" type="submit" value="comic">
+                    <input name="selection" id="" class="btn btn-sm btn-outline-secondary" type="submit" value="manga">
+                </form>
+               
+              </nav>
         </div>
+        
         <div class="card-body">
             <h4 class="card-title">Books</h4>
             <div class="table-responsive">

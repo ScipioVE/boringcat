@@ -17,6 +17,13 @@ def Index(request):
     Books = models.Book.objects.all()
     context = {"Books": Books}
 
+    if request.method == 'POST':
+       typefilter = request.POST.get('selection', None)
+       print(typefilter)
+       Books = models.Book.objects.filter(booktype = typefilter)
+       context["Books"] = Books
+       return render(request, 'books/index.html',context)
+
     return render(request, 'books/index.html',context)
 
 def newBookForm(request):
