@@ -7,9 +7,14 @@ CHOICES_BOOK = [
     ('comic', 'Comic'),
     ('book','Book')
 ]
+CHOICES_FRONTPAGE = [
+    (True, True),
+    (False, False)
+]
 
 class BookForm(forms.ModelForm):
     booktype = forms.ChoiceField(choices=CHOICES_BOOK, label="Book type")
+    front_page = forms.ChoiceField(choices=CHOICES_FRONTPAGE, label="Is a front page book")
     class Meta:
         model = models.Book
         fields = '__all__'

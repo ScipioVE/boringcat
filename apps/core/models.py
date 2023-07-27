@@ -10,7 +10,10 @@ class Book(models.Model):
     
     booktype = models.CharField(max_length=20)
     image = models.ImageField(upload_to='images/',null=True, verbose_name="Image")
-    description = models.TextField(verbose_name="Description",null=True)
+    description = models.TextField(max_length=1000,verbose_name="Description",null=True,blank=True)
+    publish_date = models.DateField(null=True)
+    front_page = models.BooleanField(default=False)
+
    
 
 
