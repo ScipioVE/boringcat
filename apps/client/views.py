@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth  import login
+from django.contrib.auth  import login, logout, authenticate
 from django.http import HttpResponse
 
 
@@ -27,5 +27,20 @@ def signupform(request):
             return render(request,'signup.html', context)
 
 
+def signout(request):
+   logout(request)
+   return redirect('Home')
 
-    
+def loginform(request):
+    context = {'loginform': AuthenticationForm}
+    if request.method == 'GET':
+         return render(request, 'signin.html',context)
+    else:
+        user = authenticate(request,username= request.POST['username'],password=request.POST['password'])
+        if user is None:
+             context.update({'error': 'Username or Password incorrect'})
+             return render(request, 'signin.html',context)
+        else:
+             login(request,user)
+             return redirect('Home')
+           

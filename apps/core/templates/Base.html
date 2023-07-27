@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title> {% block title %}  {% endblock title %}</title>
+  <title> {% block title %} {% endblock title %}</title>
   <link rel="icon" type="image/x-icon" href="{% static 'core/img/CatLogo.ico' %}  " />
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -20,23 +20,40 @@
     <!-- place navbar here -->
     <nav class="navbar navbar-expand navbar-light ">
       <a class="navbar-brand" href="{% url 'Home' %}">
-      <img src="{% static 'core/img/nav_logo.png'%}"  width="30" height="30" class="d-inline-block align-top" alt="">
-       Boring Cat</a>
+        <img src="{% static 'core/img/nav_logo.png'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Boring Cat</a>
       <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href=" {% url 'Home' %}">Home</a>
-            <a class="nav-item nav-link active" href="{% url 'Books' %}">Books</a>
-            <a class="nav-item nav-link active" href="{% url 'About' %}">About</a>
-        </div>
+        <a class="nav-item nav-link active" href=" {% url 'Home' %}">Home</a>
+        <a class="nav-item nav-link active" href="{% url 'Books' %}">Books</a>
+        <a class="nav-item nav-link active" href="{% url 'About' %}">About</a>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
+          
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'Logout' %}"><button class="btn btn-outline-danger">Logout</button></a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{% url 'Login' %}"><button class="btn btn-outline-success">Login</button></a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'Signup' %}"><button class="btn btn-outline-success">Signup</button></a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </nav>
   </header>
   <main>
-    
+
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                {% block content %}  {% endblock content %}
-            </div>
-        </div> 
+      <div class="row">
+        <div class="col-12">
+          {% block content %} {% endblock content %}
+        </div>
+      </div>
     </div>
 
   </main>
@@ -46,11 +63,11 @@
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+    </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
+    </script>
 </body>
 
 </html>
