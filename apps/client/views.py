@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth  import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-
 
 # Create your views here.
 
@@ -26,7 +26,7 @@ def signupform(request):
             context.update({"error": "passwords dont match"})
             return render(request,'signup.html', context)
 
-
+@login_required
 def signout(request):
    logout(request)
    return redirect('Home')
