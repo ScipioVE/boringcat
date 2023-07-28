@@ -3,12 +3,29 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-{{error}}
-{{login_error}}
-<form action="" method="POST">
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5" >
+<form action="" method="POST" class="card card-body">
+    <div class="card-header bg-light text-center"> <h1>Login</h1></div>
+    {{error}}
+    {{login_error}}
     {% csrf_token %}
-{{loginform.as_p}}
-<button class="btn btn-outline-primary"> Login </button>
+    <div class="mb-3">
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" class="form-control" placeholder="Write your sername">
+    </div>
+    <div class="mb-3">
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" class="form-control" placeholder="Write your password">
+
+    </div>
+    <div>
+    <button class="btn btn-outline-primary  offset-5"> Login </button>
+</div>
 
 </form>
+        </div>
+</div>
+</main>
 {% endblock content %}

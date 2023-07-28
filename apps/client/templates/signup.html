@@ -4,10 +4,31 @@
 
 
 {% block content %}
-    {{error}}
-    <form action="/signup/" method="POST">
-        {% csrf_token %}
-        {{signupform}}
-        <input name="" id="" class="btn btn-success" type="submit" value="Submit Book">
-    </form>
+{{error}}
+<main class="container">
+    <div class="row">
+    <div class="col-md-4 offset-md-4 mt-5" >
+        <form action="/signup/" method="POST" class="card card-body">
+            <div class="card-header text-center">Sign Form</div>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username" class="form-control" placeholder="Write your sername">
+            </div>
+            <div class="mb-3">
+                <label for="password1">Password:</label>
+                <input id="password1" type="password" name="password1" class="form-control" placeholder="Write your password">
+
+            </div>
+            <div class="mb-3">
+                <label for="password2"> Confirm Password:</label>
+                <input id="password2" type="password" name="password2" class="form-control" placeholder="Write your password again">
+
+            </div>
+            
+            <input name="" id="" class="btn btn-outline-success" type="submit" value="Singin!">
+        </form>
+    </div>
+    </div>
+</main>
 {% endblock content %}
