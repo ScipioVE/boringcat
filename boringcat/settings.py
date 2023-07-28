@@ -127,6 +127,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/'static']
 
+LOGIN_URL = 'login/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'')
 MEDIA_URL  = '/images/'
 
