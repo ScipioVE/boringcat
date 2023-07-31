@@ -10,4 +10,6 @@ urlpatterns = [
     path('Books/edit_book', views.editBookForm,name='EditBook'),
     path('delete_book/<int:id>', views.deleteBook, name='DeleteBook'),
     path('Books/edit_book/<int:id>', views.editBookForm, name='EditBook'),
+    path('Book/Post/<int:id>', views.post_detail, name='Post')
+    
 ] + static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)

@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8  mb-4 mt-3 left top">
+      <div class="card-body d-flex mx-2">
+        <img src="{{ Post.author.image.url }}" width="200px" height="250px" class="mr-3">
+        <div class="mx-2">
+          <h1>{% block title %} {{ Post.author.title }} {% endblock title %}</h1>
+          <hr>
+          <small class="text-muted"> Release date</small>
+          <p class="text-muted">{{ Post.author.publish_date }}</p>
+          <small class="text-muted">Description </small>
+          <p class="card-text">{{ Post.author.description | safe }}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="lh-1"> {{ Post.content  | safe }} </p>
+{% endblock content %}

@@ -26,4 +26,10 @@ class BookForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({'class': 'form-control', 'placeholder':field.capitalize()})
         
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+        fields = ('name','body')
+
+
    

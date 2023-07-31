@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect ,get_object_or_404
 from django.http import HttpResponse
 from . import models, forms
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def start(request):
-    return  render(request,'home.html')
+    frontbooks = models.Book.objects.filter(front_page = True)
+    context = { 'frontbooks' : frontbooks}
+    return  render(request,'home.html', context)
 
 def Aboutus(request):
     return render(request,'About.html')
@@ -49,3 +51,14 @@ def deleteBook(request, id):
     book = models.Book.objects.get(id = id)
     book.delete()
     return redirect('Books')
+
+
+
+def post_detail(request,id):
+    book = get_object_or_404(models.Book, pk=id)
+    context = {'Post' : models.Post(request.POST or None, request.FILES or None, author = book )
+    }
+    return render(request,'posts/post_detail.html', context)
+
+
+
