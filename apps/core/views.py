@@ -53,11 +53,10 @@ def deleteBook(request, id):
     return redirect('Books')
 
 
-
-def post_detail(request,id):
-    book = get_object_or_404(models.Book, pk=id)
-    context = {'Post' : models.Post(request.POST or None, request.FILES or None, author = book )
-    }
+def post_detail(request, id):
+    post = get_object_or_404(models.Post, pk=id)
+    context = {'Post': post}
+   
     return render(request,'posts/post_detail.html', context)
 
 
