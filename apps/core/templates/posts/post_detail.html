@@ -6,6 +6,10 @@
         <img src="{{ Post.author.image.url }}" width="200px" height="250px" class="mr-3">
         <div class="mx-2">
           <h1>{% block title %} {{ Post.author.title }} {% endblock title %}</h1>
+          {% if user.is_authenticated and user.is_staff%}
+          <a name="" id="" class="btn btn-success" href="{% url 'EditPost' Post.author.id %}" role="button">Edit post</a>
+          {% endif %}
+          
           <hr>
           <small class="text-muted"> Release date</small>
           <p class="text-muted">{{ Post.author.publish_date }}</p>
