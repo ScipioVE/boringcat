@@ -1,0 +1,15 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+  
+    {% for formfield  in forms  %}
+      
+   <div class="mb-3">
+     <label for="" class="form-label"> {{formfield.label}}:</label>
+     {{ formfield }}
+   </div>
+   <div class="col-12 help-text">{{formfield.errors}}</div>
+  
+   {% endfor %}
+  
+   <input name="" id="" class="btn btn-success" type="submit" value="Make new post">
+  </form>
