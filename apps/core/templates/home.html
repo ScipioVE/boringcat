@@ -9,29 +9,40 @@
         <div class="h-100 p-5 text-white bg-dark border rounded-3">
             <h2>Welcome to Boring Cat!</h2>
             <p>Get started!</p>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.is_staff %}
             <a href="{% url 'NewBook' %}"><button class="btn btn-outline-primary" type="button"> Add a new
                     Book!</button></a>
+            <a href="{% url 'PostForm' %}"><button class="btn btn-outline-primary" type="button"> Make a Book
+                    post!</button></a>
             {% endif %}
-            <a href="{% url 'Books' %}"><button class="btn btn-outline-primary" type="button"> See all
+            <a href="{% url 'Catalog' %}"><button class="btn btn-outline-primary" type="button"> See all
                     books</button></a>
         </div>
     </div>
-<div class="hr">
-    <h4 class="title mt-5" >Featured </h4>
-    <hr>
-</div>
-    {% for book in frontbooks %}
-        <div class="card mt-2 mx-2" style="width: 12rem; display: inline-block;">
-            <img src="{{ book.image.url }}" height="150px" width="18rem" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ book.title }}</h5>
-                <h6 class="card-subtitle"> {{book.type}}</h6>
-                <p class="card-text fs-5"> Release date: {{ book.publish_date }}</p>
-                <a href="#" class="btn btn-primary">See more</a>
-            </div>
+    <div class="col-md-6 mt-5">
+        <div class="h-100 p-5 text-dark bg-light border rounded-3">
+            <h2>Your best Website for comics!</h2>
+            <p>Join and talk, give your opions about the best comics and mangas!</p>
         </div>
-    {% endfor %}
+    </div>
 </div>
+
+    <div class="hr">
+        <h4 class="title mt-5">Featured </h4>
+        <hr>
+    </div>
+    {% for book in frontbooks %}
+    <div class="card mt-2 mx-1" style="width: 12rem; display: inline-block;">
+        <img src="{{ book.image.url }}" height="200px" width="100" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <h6 class="card-subtitle"> {{book.type}}</h6>
+            <p class="card-text fs-5"> Release date: {{ book.publish_date }}</p>
+            <a href="{% url 'Post' book.id %}" class="btn btn-primary">See more</a>
+
+        </div>
+    </div>
+    {% endfor %}
+
 
 {% endblock content %}
