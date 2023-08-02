@@ -24,7 +24,11 @@
         Boring Cat</a>
       <div class="nav navbar-nav">
         <a class="nav-item nav-link active" href=" {% url 'Home' %}">Home</a>
+        {% if user.is_authenticated and user.is_staff %}
         <a class="nav-item nav-link active" href="{% url 'Books' %}">Books</a>
+        {% else %}
+        <a class="nav-item nav-link active" href="{% url 'Catalog' %}">Books</a>
+        {% endif %}
         <a class="nav-item nav-link active" href="{% url 'About' %}">About</a>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -57,8 +61,17 @@
     </div>
 
   </main>
-  <footer>
-    <!-- place footer here -->
+  <footer class="text-center text-white mt-1" style="background-color: #21081a;">
+   
+    <div class="container p-4"></div>
+   
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="{% url 'Home' %}">BoringCat.com</a>
+    </div>
+    <!-- Copyright -->
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
