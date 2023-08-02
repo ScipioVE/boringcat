@@ -32,4 +32,10 @@ class CommentForm(forms.ModelForm):
         fields = ('name','body')
 
 
-   
+
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = '__all__'
