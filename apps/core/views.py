@@ -27,6 +27,7 @@ def Index(request):
        return render(request, 'books/index.html',context)
 
     return render(request, 'books/index.html',context)
+
 @login_required
 def newBookForm(request):
     form = forms.BookForm(request.POST or None, request.FILES or None)
@@ -43,8 +44,9 @@ def newBookForm(request):
 def editBookForm(request, id):
     book = models.Book.objects.get(id = id)
     form = forms.BookForm(request.POST or None, request.FILES or None, instance = book)
-    print(form)
     context = { 'forms': form}
+    if form.is_valid():
+     form.save()
     return render(request,'books/editbook.html', context)
 @login_required
 def deleteBook(request, id):
@@ -61,3 +63,36 @@ def post_detail(request, id):
 
 
 
+def postForm(request):
+    form = forms.PostForm(request.POST or None, request.FILES or None)
+    test = form.is_valid() 
+    if test :
+        form.save()
+        return redirect('Books')
+    else:
+        print("ERROR!!")
+    context = { 'forms': form}
+    return render(request,'posts/post_form.html', context)
+
+def editPostForm(request, id):
+    Post = models.Post.objects.get(id = id)
+    form = forms.PostForm(request.POST or None, request.FILES or None, instance = Post)
+    if form.is_valid():
+     form.save()
+     return redirect('Books')
+    context = { 'forms': form}
+    return render(request,'posts/edit_post.html', context)
+
+
+
+def catalog(request):
+     Books = models.Book.objects.all()
+     context = {"Books": Books}
+
+     if request.method == 'POST':
+         typefilter = request.POST.get('selection', None)
+         Books = models.Book.objects.filter(booktype = typefilter)
+         context["Books"] = Books
+         return render(request, 'books/catalog.html',context)
+     
+     return render(request, 'books/catalog.html',context)
