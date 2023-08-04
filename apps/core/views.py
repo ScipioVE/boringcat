@@ -54,14 +54,29 @@ def deleteBook(request, id):
     book.delete()
     return redirect('Books')
 
-
+#########################################################
 def post_detail(request, id):
     post = get_object_or_404(models.Post, pk=id)
+    post_c = models.Post.objects.get(id = id)
     context = {'Post': post}
+
+    if request.method == 'POST':
+        commentform = forms.CommentForm(request.POST)
+        if commentform.is_valid():
+           obj = commentform.save(commit=False)
+           obj.post =  post_c
+           obj.save()
+
+           return redirect('Post',id)
+    else:
+        commentform = forms.CommentForm()
+
+    commentform = forms.CommentForm(request.POST or None, request.FILES or None)
+    context.update({'CommentsForm':commentform})
    
     return render(request,'posts/post_detail.html', context)
 
-
+############################################################
 
 def postForm(request):
     form = forms.PostForm(request.POST or None, request.FILES or None)

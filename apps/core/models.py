@@ -48,9 +48,9 @@ class Post(models.Model):
         return self.title
 
 
-
+########################################
 class Comment(models.Model):
-    parent = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="comments")
+    parent = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=50)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -60,4 +60,5 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self) -> str:
-        return "Comment {} by {}".format(self.body, self.name)
+        return "Comment on {} by {}".format(self.parent.title, self.name)
+##############################################

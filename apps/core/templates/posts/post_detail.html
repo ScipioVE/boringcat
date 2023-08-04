@@ -21,6 +21,24 @@
     </div>
   </div>
 </div>
-
 <p class="lh-1"> {{ Post.content  | safe }} </p>
+<hr>
+
+<h2>Comment section!</h2>
+ {% for comment in post.comments.all  %}
+   <article>
+    <strong>
+      {{ comment.name }}  at {{comment.created_on}} 
+    </strong><br>
+     {{comment.body}}
+   </article>
+  
+ {% endfor %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{CommentsForm.as_table}}
+  <input name="" id="" class="btn btn-success" type="submit" value="Add comment">
+
+</form>
 {% endblock content %}

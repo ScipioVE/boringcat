@@ -24,18 +24,17 @@ class BookForm(forms.ModelForm):
         for field in self.fields:
             print(field)
             self.fields[field].widget.attrs.update({'class': 'form-control', 'placeholder':field.capitalize()})
-        
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = models.Comment
-        fields = ('name','body')
-
-
-
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = models.Post
         fields = '__all__'
+
+
+##########################################
+class CommentForm(forms.ModelForm):
+    class Meta:
+      model = models.Comment
+      fields =['body']
+###########################################
