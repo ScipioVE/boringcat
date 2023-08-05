@@ -64,14 +64,15 @@ def post_detail(request, id):
         commentform = forms.CommentForm(request.POST)
         if commentform.is_valid():
            obj = commentform.save(commit=False)
-           obj.post =  post_c
+           obj.parent = post
+           obj.name = request.user.username
            obj.save()
 
            return redirect('Post',id)
     else:
         commentform = forms.CommentForm()
-
-    commentform = forms.CommentForm(request.POST or None, request.FILES or None)
+    
+    
     context.update({'CommentsForm':commentform})
    
     return render(request,'posts/post_detail.html', context)
