@@ -27,10 +27,10 @@ Staff:
 # Tecnologias Utilizadas 
 ## Frontend 
 - HTML5
-- Bootstrap 5 (Framework, CSS y Javascript ES6)
+- Framework Bootstrap 5( CSS y Javascript ES6)
 
 ## Backend
-- Python.3.11 (Framework Django 4.2.4)
+- Framework Django 4.2.4(Python.3.11 )
 
 
 # Video de muestra
