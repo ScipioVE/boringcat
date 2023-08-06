@@ -24,16 +24,16 @@ Staff:
 - Pueden Añadir/Editar/Borrar Libros
 - Pueden Crear/Editar Posts
 
-## Tecnologias Utilizadas 
-# Frontend 
+# Tecnologias Utilizadas 
+## Frontend 
 - HTML5
 - Bootstrap 5 (Framework, CSS y Javascript ES6)
 
-# Backend
+## Backend
 - Python.3.11 (Framework Django 4.2.4)
 
 
-### Video de muestra
+# Video de muestra
 
  
 
