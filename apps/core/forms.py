@@ -30,11 +30,18 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = models.Post
         fields = '__all__'
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 40, 'cols': 100, 'placeholder': 'Content here'})
+        }
 
 
 ##########################################
 class CommentForm(forms.ModelForm):
     class Meta:
-      model = models.Comment
-      fields =['body']
+        model = models.Comment
+        fields = ['body']
+        widgets = {
+            'body': forms.Textarea(attrs={'rows': 4, 'cols': 40, 'placeholder': 'Write your comment here...'})
+        }
+
 ###########################################

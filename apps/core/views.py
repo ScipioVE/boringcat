@@ -57,7 +57,6 @@ def deleteBook(request, id):
 #########################################################
 def post_detail(request, id):
     post = get_object_or_404(models.Post, pk=id)
-    post_c = models.Post.objects.get(id = id)
     context = {'Post': post}
 
     if request.method == 'POST':
@@ -72,8 +71,10 @@ def post_detail(request, id):
     else:
         commentform = forms.CommentForm()
     
+
     
-    context.update({'CommentsForm':commentform})
+
+    context.update({'commentsForm':commentform})
    
     return render(request,'posts/post_detail.html', context)
 

@@ -15,27 +15,45 @@
           <small class="text-muted"> Release date</small>
           <p class="text-muted">{{ Post.author.publish_date }}</p>
           <small class="text-muted">Description </small>
-          <p class="card-text">{{ Post.author.description | safe }}</p>
+          <p class="card-text">{{ Post.author.description | safe| linebreaks }}</p>
 
         </div>
       </div>
     </div>
   </div>
 </div>
-<p class="lh-1"> {{ Post.content | safe }} </p>
+<p class="lh-1"> {{ Post.content | safe | linebreaks }} </p>
 <hr>
-
-<h2>Comment section!</h2>
-{% for comment in Post.comments.all %}
-<article>
-  <strong>
-    {{ comment.name }} at {{ comment.created_on }}
-  </strong><br>
-  {{ comment.body }}
+<div class="card">
+  <div class="card-header">
+    <h2>Comment section!</h2>
+  </div>
+  <ul class="list-group list-group-flush">
+    {% for comment in Post.comments.all %}
+     <div class="card-title mx-2"> <strong> {{ comment.name }} at {{ comment.created_on }} </strong></div>
+     <li class="list-group-item">{{ comment.body }}</li>
+  
 </article>
 {% endfor %}
+    
+    
+  </ul>
+</div>
 
-{% include 'posts/commentform.html' %}
 
 
+
+
+<form method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="{{ commentsForm.body.id_for_label }}"> <h5 class="card-header"> Add a comment: </h5></label>
+   
+  </div>
+  <div class="card-body">
+  {{ commentsForm.body }}
+  </div>
+
+  <input name="" id="" class="btn btn-success" type="submit" value="Add Comment">
+</form>
 {% endblock content %}
