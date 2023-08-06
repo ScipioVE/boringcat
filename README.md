@@ -13,11 +13,13 @@ Un usuario no registrado:
 - Puede Navegar
 
 Usuarios normales registrados:
+
 **Ademas**
 - Hacer Login/out
 - Comentar en los posts
 
 Staff:
+
 **Ademas**
 - Pueden Añadir/Editar/Borrar Libros
 - Pueden Crear/Editar Posts
