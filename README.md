@@ -1,7 +1,7 @@
 ## Informacion CoderHouse
 
-** Comisión: 43860
-** Nombre: Manuel Matheus
+** Comisión: 43860 **
+** Nombre: Manuel Matheus **
 
 ## Informacion del Proyecto
 
