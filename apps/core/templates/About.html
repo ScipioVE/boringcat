@@ -4,5 +4,28 @@
 {% block title %} About Us{% endblock title %}
 
 {% block content %}
-    About Us
+<div class="about-section bg-dark text-white py-5">
+    <div class="container text-center">
+      <h1>About Us</h1>
+      <p>Proyecto Final para mi curso de CoderHouse, intento recrear un sitio web de noticias sobre Comics, Mangas, etc..</p>
+      <p></p>
+    </div>
+  </div>
+  
+  <h2 class="text-center my-4">Our Team</h2>
+  
+  <div class="row center">
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img src="{% static 'core/img/profile.png' %}" alt="Manuel" style="width: 100%">
+        <div class="card-body">
+          <h2 class="card-title">Manuel Matheus</h2>
+          <p class="card-text">Estudiante</p>
+          <p class="card-text">Me gustan la programación, a pesar de que el desarrollo web no es el sector que más me llama la atención. Aprendí un montón sobre Python y su framework Django. Sin duda, un curso genial para aprender los fundamentos de este sector.</p>
+          <p class="card-text"><a href="https://github.com/ScipioVE"><img src="{% static 'core/img/hubicon.png' %}" alt="GitHub" width="30" height="30" class="d-inline-block align-top" alt=""></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 {% endblock content %}
