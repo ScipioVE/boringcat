@@ -22,6 +22,7 @@
     </div>
   </div>
 </div>
+<hr>
 <p class="lh-1"> {{ Post.content | safe | linebreaks }} </p>
 <hr>
 <div class="card">
@@ -43,10 +44,11 @@
 
 
 
-
+{% if user.is_authenticated %}
 <form method="post">
   {% csrf_token %}
   <div class="form-group">
+   
     <label for="{{ commentsForm.body.id_for_label }}"> <h5 class="card-header"> Add a comment: </h5></label>
    
   </div>
@@ -56,4 +58,9 @@
 
   <input name="" id="" class="btn btn-success" type="submit" value="Add Comment">
 </form>
+{% else %}
+ <p> <h2> Join our Community to add comments! </h2></p>
+<a href="{% url 'Login' %}"><button class="btn btn-outline-success">Login</button></a>
+<a href="{% url 'Signup' %}"><button class="btn btn-outline-success">Signup</button></a>
+{% endif %}
 {% endblock content %}
