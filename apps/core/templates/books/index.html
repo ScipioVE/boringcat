@@ -45,7 +45,11 @@
 
                             </td>
                             <td>{{Book.description}}</td>
-                            <td> <a name="" id="" class="btn btn-success" href="{% url 'Post' Book.id %}" role="button">Make/edit post</a></td>
+                            <td>
+                                <a href="{% url 'PostForm' %}"><button class="btn btn-primary" type="button"> Make a Book
+                                    post!</button></a>
+                                 <a name="" id="" class="btn btn-success" href="{% url 'Post' Book.id %}" role="button">edit post</a>
+                                </td>
                             <td> <a name="" id="" class="btn btn-success" href="{% url 'EditBook' Book.id %}" role="button">Edit</a>  
                                 <a name="" id="" class="btn btn-danger" href="{% url 'DeleteBook' Book.id %}" role="button">Delete</a></td>
                         </tr>
